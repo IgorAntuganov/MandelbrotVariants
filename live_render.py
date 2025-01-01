@@ -1,12 +1,12 @@
 import pygame
 
 pygame.init()
-# from numba import njit
+from numba import njit
 from math import sqrt, log
 from time import time
 
 
-# @njit(fastmath=True)
+@njit(fastmath=True)
 def checkPoint(x, y, depth):
     z = c = x + 1j * y
 
@@ -35,7 +35,9 @@ def checkPoint(x, y, depth):
         # z = z ** (-5.5) - z
         # z = z ** (-4) - z
         # z = z ** (-5 - 1/3) - z
-        z = z ** (-5 - 1/5) - z
+        # z = z ** (-5 - 1/5) - z
+        z = z ** (-8-1/2) - z  # чем дальше тем больше итераций нужно для того чтобы картинка "загорелась"
+        # уже тут необходимо 100к+ итераций
 
         if abs(z) > 4:
             break
