@@ -91,7 +91,30 @@ def checkPoint(x, y, depth):
         # z = ((z ** 3 + c) ** 3 + c) ** 2.5 + c  # smth in between z^2+c and z^3+c
         # z = ((z ** 3 + c) ** 3 + c) ** 3 + c  # same as z^3+c and have 2 less iterations
 
+        # z = ((z ** 4 + c) ** 3 + c) ** 2 + c  # new way of warping between z^2+c, z^3+c and z^4+c simultaneously
+        # z = ((z ** 4 - c) ** 3 - c) ** 2 + c
+        # z = ((z ** 4 + c) ** 3 + c) ** 2 + z  # Wierd and interesting
+        # z = ((z ** 4 + z) ** 3 + z) ** 2 + z  # as wierd as previous
 
+        # z = ((z**14 - z) ** 3 - z) ** 2 + z
+        # z = ((z**2 + c) ** 2 + c) ** 2 + c*z
+        # z = ((z**2 + c) ** 2 + c) ** 2 + c**z
+        # z = ((z ** 34 + c) ** 17 + c) ** (z*2) + c ** z  # weirdly, but this also interesting
+        # z = ((z ** 34 + c**9) ** 17 + c) ** (z * 2) + c ** z  # just slightly warped previous
+        # z = ((z ** 61 + c) ** 37 + c) ** (z * 31) + c ** z  # noticeably warped previous (origin with 34, 17, 2)
+        # z = ((z ** 1 + c) ** 3 + c) ** (z * 7) + c ** z  # Interesting + have more than usual (bigger) size
+        # z = (((z ** 11 + c) ** 3 + c) ** (z * 7) + c ** z) ** 2 + c  # Very interesting, slightly warped previous
+        # z = (((z ** 3 + c) ** 11 + c) ** (z * 3) + c ** z) ** 7 + c  # Obviously warped previous + interesting
+
+        # warped previous. Might remind dragon or goat silhouette
+        # z = (((z ** 3 + c) ** (11**z) + c) ** (z * 3) + c ** z) ** 7 + c
+        # z = (((z ** 3 + c) ** (11**z) + c) ** (z * 39) + c ** z) ** 7 + c  # less readable previous variant
+
+        # Really chaotic, but have original mandelbrot set at
+        # real: -0.5510537695737304
+        # imag: -0.004315655639898554
+        # zoom: 2^13.5
+        # z = (((z ** 3 + c) ** (2**z) + c) ** (z * 3) + c ** z) ** 2 + c
 
         if abs(z) > 2:
             break
