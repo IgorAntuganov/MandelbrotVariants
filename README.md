@@ -6,3 +6,5 @@ It was in test_scripts/mandelbrot of https://github.com/IgorAntuganov/ContentCla
 
 - `docs/`: project documentation
   - `commint_convention.md`: a binding list of rules for commit text
+  - `notes.txt`: local notes files
+  - `formulas.txt`: list of formulas known at start of project

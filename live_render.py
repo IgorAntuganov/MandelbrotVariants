@@ -36,10 +36,15 @@ def checkPoint(x, y, depth):
         # z = z ** (-4) - z
         # z = z ** (-5 - 1/3) - z
         # z = z ** (-5 - 1/5) - z
-        z = z ** (-8-1/2) - z  # чем дальше тем больше итераций нужно для того чтобы картинка "загорелась"
+        # z = z ** (-8-1/2) - z  # чем дальше тем больше итераций нужно для того чтобы картинка "загорелась"
         # уже тут необходимо 100к+ итераций
+        # !!! до этого момента стояла проверка abs(z)>4, хотя должно было быть >2
+        # z = z ** 8 - z ** 4 - z**2 - z
+        # z = z ** 37 - z ** 31 - c ** z * z ** c
+        # z = z ** 17 - z ** 19 - c ** z * z ** c
+        z = 19 * z ** 17 - 17 * z ** 19 - c ** z * z ** c
 
-        if abs(z) > 4:
+        if abs(z) > 2:
             break
     if k == depth - 1:
         k = -1
@@ -86,8 +91,8 @@ class Time:
 
 
 class Info:
-    x = -4
-    y = 9/4
+    x = 0
+    y = 0
     scale = 1
     depth = 100
     surfaces = [0, 0, 0, 0]
@@ -102,11 +107,11 @@ class Info:
 
     @property
     def left(self):
-        return self.x - 192 * self.pix_offset
+        return self.x - 192 * 3 * self.pix_offset
 
     @property
     def up(self):
-        return self.y + 108 * self.pix_offset
+        return self.y + 108 * 3 * self.pix_offset
 
     def move(self, x, y):
         if x > 0:
