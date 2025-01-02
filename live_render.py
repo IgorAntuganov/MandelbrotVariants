@@ -42,7 +42,56 @@ def checkPoint(x, y, depth):
         # z = z ** 8 - z ** 4 - z**2 - z
         # z = z ** 37 - z ** 31 - c ** z * z ** c
         # z = z ** 17 - z ** 19 - c ** z * z ** c
-        z = 19 * z ** 17 - 17 * z ** 19 - c ** z * z ** c
+        # z = 19 * z ** 17 - 17 * z ** 19 - c ** z * z ** c
+        # z = z ** 4 + c * (2 * z**2 + c + 1)  # Same as original, but 1 iteration skipped
+        # z = z ** 4 - c * (2 * z**2 + c + 1)  # got from putting formula inside formula
+        # then creating "conjugates". Paper was used in process
+        # z = z ** 4 - c * (2 * z ** 2 - c - 1)  # interesting as previous
+        # z = z ** 4 - c * (-2 * z ** 2 - c - 1)  # same as original (signs)
+
+        # interesting properties. Have tiny separate sub-fractals. Formula from calculating further abstracting previous
+        # z = z ** 8 + c ** 2 * (4 * z**2 + 1) + c * z**2 * (4 * z**4 + 2 * z**2 + 4)
+        # z = z ** 8 - c ** 2 * (4 * z ** 2 + 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)  # mirrored previous?
+        # z = z ** 8 + c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)  # why not
+        # z = z ** 8 + c ** 2 * (4 * z ** 2 + 1) + c * z ** 2 * (4 * z ** 4 - 2 * z ** 2 - 4)  # cool
+
+        # Now there are 3 lines of formulas and 2 new variables | Cool
+        # a = z ** 8 + c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+        # b = z ** 4 + c * (2 * z**2 + c + 1)
+        # z = b ** 4 + c * (2 * a**2 + c + 1)
+
+        # Now there are 3 lines of formulas and 2 new variables | Cool, and have insanely tiny sub-fractals
+        # a = z ** 8 + c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+        # b = z ** 4 + c * (2 * z ** 2 + c + 1)
+        # z = b ** 4 - c * (2 * a ** 2 + c + 1)
+
+        # Cool
+        # a = z ** 8 - c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+        # b = z ** 4 - c * (2 * z ** 2 + c + 1)
+        # z = b ** 4 - c * (2 * a ** 2 + c + 1)
+
+        # Interesting
+        # a = z ** 8 - c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+        # b = z ** 4 - c * (2 * z ** 2 + c - 1)
+        # z = b ** 55 - c * (2 * a ** 2 + c - 1)
+
+        # Interesting
+        # a = z ** 8 - c ** 2 * (4 * z ** 2 + 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+        # b = z ** 4 - c * (2 * z ** 2 + c - 1)
+        # z = b ** 2 - c * (2 * a ** 2 + c - 1)
+
+        # z = (z ** 2 + c) ** 2 + c  # same as original, but have 1 less iteration
+        # z = (z**2 + c) ** 2 - c  # interesting, and reminds some previous results
+        # z = (z**2 - c) ** 2 - c  # mirrored original
+        # z = (z ** 2 - c) ** 2 + c  # mirrored previous that remind something else
+
+        # z = ((z ** 2 + c) ** 2 + c) ** 2 + c  # same as original, but have 2 less iterations
+        # z = ((z ** 2 + c) ** 2 - c) ** 2 + c  # cool, in some way new
+        # z = ((z ** 2 + c) ** 2 - c/2) ** 2 + c  # slightly and gently warped previous
+        # z = ((z ** 3 + c) ** 3 + c) ** 2.5 + c  # smth in between z^2+c and z^3+c
+        # z = ((z ** 3 + c) ** 3 + c) ** 3 + c  # same as z^3+c and have 2 less iterations
+
+
 
         if abs(z) > 2:
             break

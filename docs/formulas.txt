@@ -1,4 +1,4 @@
-! SOME FORMULAS WAS TESTED WITH INCORRECT EXIT POINT !
+! SOME FORMULAS WERE TESTED WITH INCORRECT EXIT POINT !
 ! I accidentally use "if abs(z) > 4" instead of "if abs(z) > 2"!
 
 Many formulas for beauty images
@@ -93,3 +93,42 @@ z = (z**c) ** 2
 z = z ** 37 - z ** 31 - c ** z * z ** c
 z = z ** 17 - z ** 19 - c ** z * z ** c
 z = 19 * z ** 17 - 17 * z ** 19 - c ** z * z ** c
+
+z = z ** 4 + c * (2 * z**2 + c + 1)  # Same as original, but 1 iteration skipped
+z = z ** 4 - c * (2 * z**2 + c + 1)  # got from putting formula inside formula
+then creating "conjugates". Paper was used in process
+
+Then came really large formulas:
+
+# interesting properties. Have tiny separate sub-fractals. Formula from calculating further abstracting previous
+z = z ** 8 + c ** 2 * (4 * z**2 + 1) + c * z**2 * (4 * z**4 + 2 * z**2 + 4)
+z = z ** 8 - c ** 2 * (4 * z ** 2 + 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)  # mirrored previous?
+z = z ** 8 + c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)  # why not
+z = z ** 8 + c ** 2 * (4 * z ** 2 + 1) + c * z ** 2 * (4 * z ** 4 - 2 * z ** 2 - 4)  # cool
+
+And even 3 lines with 2 variables
+
+Now there are 3 lines of formulas and 2 new variables | Cool
+a = z ** 8 + c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+b = z ** 4 + c * (2 * z**2 + c + 1)
+z = b ** 4 + c * (2 * a**2 + c + 1)
+
+Now there are 3 lines of formulas and 2 new variables | Cool, and have insanely tiny sub-fractals
+a = z ** 8 + c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+b = z ** 4 + c * (2 * z ** 2 + c + 1)
+z = b ** 4 - c * (2 * a ** 2 + c + 1)
+
+Cool
+a = z ** 8 - c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+b = z ** 4 - c * (2 * z ** 2 + c + 1)
+z = b ** 4 - c * (2 * a ** 2 + c + 1)
+
+Interesting
+a = z ** 8 - c ** 2 * (4 * z ** 2 - 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+b = z ** 4 - c * (2 * z ** 2 + c - 1)
+z = b ** 55 - c * (2 * a ** 2 + c - 1)
+
+Interesting
+= z ** 8 - c ** 2 * (4 * z ** 2 + 1) + c * z ** 2 * (4 * z ** 4 + 2 * z ** 2 + 4)
+= z ** 4 - c * (2 * z ** 2 + c - 1)
+= b ** 2 - c * (2 * a ** 2 + c - 1)
