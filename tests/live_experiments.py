@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 from numba import njit
 from math import sqrt, log
-from time import time
+from time import time, sleep
 
 
 @njit(fastmath=True)
@@ -158,6 +158,10 @@ def checkPoint(x, y, depth):
         # z = 2 ** (z**2) # simpler, have 2 asymptote
         # z = 2 ** (z**c)  # interesting
         # z = 2 ** (z*c)  # define structure for 3d effects, have cute lines and overlapping "balls"
+
+        # z = ((z ** 4 + z) ** 3 + z) ** 2 + z
+        # z = ((z ** 5 + z) ** 4 + z) ** 3 + z
+        z = ((z ** 8 + z) ** 15 + z) ** 17 + z
 
         if abs(z) > 2:
             break
@@ -341,6 +345,8 @@ while run:
         if I.check_keys():
             break
     else:
+        last_tick = time()
         while True:
+            sleep(.1)
             if I.check_keys():
                 break
